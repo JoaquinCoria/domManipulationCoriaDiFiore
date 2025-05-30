@@ -4,6 +4,7 @@ const app = document.getElementById('app');
         const botonEliminar = document.querySelector('.btnEliminar');
         const botonModificar = document.querySelector('.btnModificar');
         const botonEnviar = document.createElement('button');
+        const botonCancelar = document.createElement('button');
 
         function agregarElemento()
         {
@@ -99,8 +100,37 @@ const app = document.getElementById('app');
             guardarCard.removeChild(botonEliminar);
        }    
        // Cancela el proceso de edición
-
+       function cancelar(){
+            //Llamo al card
+            const guardarCard = document.querySelector('.card:last-of-type');
+            //modifico la imagen predeterminada
+            const nuevaImagen = document.createElement('img');
+            const inputImagen = document.querySelector('.EditarImagen');
+            nuevaImagen.src =  inputImagen.placeholder;
+            //modifico el titulo predeterminado
+            const nuevoTitulo = document.createElement('h2');
+            const inputTitulo = document.querySelector('.EditarTitulo');
+            nuevoTitulo.textContent =  inputTitulo.placeholder;
+            //modifico la descripcion predeterminada
+            const nuevaDescripcion=document.createElement('p');
+            const inputDescripcion=document.querySelector('.EditarDescripcion');
+            nuevaDescripcion.textContent = inputDescripcion.placeholder;
+            //reemplazo la imagen
+            guardarCard.replaceChild(nuevaImagen, inputImagen);
+            //remplazo la descripcion
+            guardarCard.replaceChild(nuevaDescripcion, inputDescripcion);
+            //remplazo el titulo
+            
+            guardarCard.replaceChild(nuevoTitulo, inputTitulo);
+            botonEnviar.textContent = 'enviar';
+            botonEnviar.classList.add('enviar');
+            guardarCard.removeChild(botonEnviar);
+            botonCancelar.textContent = 'cancelar';
+            botonEliminar.classList.add('cancelar');
+            guardarCard.removeChild(botonEliminar);
+       }
         botonEnviar.addEventListener('click',guardar);
+        botonCancelar.addEventListener('click',cancelar);
         botonModificar.addEventListener('click',modificarElemento);
         botonAgregar.addEventListener('click',agregarElemento);
         botonEliminar.addEventListener('click',eliminarElemento);
