@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manipulación de DOMs</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <div id="app"></div>
@@ -11,37 +12,8 @@
         <button class="btnModificar">✎</button>
         <button class="btnEliminar">x</button>
         <div id ="cards">
-
         </div>
     </div>
-    <script>
-        const app = document.getElementById('app');
-        const cards = document.getElementById('cards');
-        const botonAgregar = document.querySelector('.btnAgregar');
-        const botonEliminar = document.querySelector('.btnEliminar');
-        function agregarElemento()
-        {
-            const nuevaCard = document.createElement('div');
-            const imagenCard = document.createElement('img');
-            imagenCard.textContent = "imagen";
-            nuevaCard.classList.add('card');
-            const tituloCard = document.createElement('h2');
-            tituloCard.textContent = "Titulo";
-            const descripcionCard = document.createElement('p');
-            descripcionCard.textContent = "Descripción";
-            cards.appendChild(nuevaCard);
-            nuevaCard.appendChild(tituloCard);
-            nuevaCard.appendChild(descripcionCard);
-        }
-        // no anda
-        function eliminarElemento()
-        {
-            const eliminarCard = document.querySelector('#cards:first-child');
-            eliminarCard.parentNode.removeChild(eliminarCard);
-            
-        }
-        botonAgregar.addEventListener('click',agregarElemento);
-        botonEliminar.addEventListener('click',eliminarElemento);
-    </script>
+    <script src="js/app.js" defer></script>
 </body>
 </html>
